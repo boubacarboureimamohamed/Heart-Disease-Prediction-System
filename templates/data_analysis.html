@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>Heart Disease Predictor</title>
+
+    <!-- Bootstrap core CSS -->
+    <link type="text/css" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/fontawesome.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/templatemo-space-dynamic.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/animated.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/owl.css') }}">
+
+</head>
+
+<body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+        <div class="preloader-inner">
+            <span class="dot"></span>
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="{{ url_for('home') }}" class="logo">
+                          <h4>H<span>D</span>P<span>S</span></h4>
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li class="scroll-to-section">
+                                {% if current_user.is_authenticated %}
+                                     <a href="{{ url_for('home') }}">Tableau de Bord</a>
+                                {% endif %}
+                            </li>
+                            <li class="scroll-to-section"><a href="{{ url_for('index') }}">Accueil</a></li>
+                            <li class="scroll-to-section">
+                                {% if current_user.is_authenticated %}
+                                     <div class="main-red-button"><a href="{{ url_for('logout') }}">Se déconnecter</a></div>
+                                {% else %}
+                                     <div class="main-red-button"><a href="{{ url_for('login') }}">Se connecter / S' inscrire</a></div>
+                                {% endif %}
+                            </li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <br><br>
+
+     <div id="portfolio" class="our-portfolio section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading  wow bounceIn" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <h3>Voir le Rapport de Données <em>de notre Jeu de Donnéest</em><span></span></h3>
+                    </div>
+                    <div id="" class="contact-us section">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 align-self-center" data-wow-duration="0.5s" data-wow-delay="0.25s">
+                                <form id="contact" action="" method="" enctype="">
+                                    <div class="row">
+                                        <table class="table table-bordered">
+                                          <thead>
+                                            <tr>
+                                              <th colspan="2" style="text-align: center;"><h4>Analyse de l'Ensemble de Données</h4></th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            <tr>
+                                              <td>Type de Données</td>
+                                              <td>72.0 %</td>
+                                            </tr>
+                                            <tr>
+                                              <td>Forme de Données</td>
+                                              <td>82.67 %</td>
+                                            </tr>
+                                            <tr>
+                                              <td>Valeurs Cibles Uniques</td>
+                                              <td>[0 , 1]</td>
+                                            </tr>
+                                            <tr>
+                                              <td>Pourcentage de Patients atteints de Maladie Cardiaque</td>
+                                              <td>54 %</td>
+                                            </tr>
+                                            <tr>
+                                              <td>Pourcentage de Patients sans Maladie Cardiaque</td>
+                                              <td>46 %</td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+
+                                        <table class="table table-bordered">
+                                          <thead>
+                                            <tr>
+                                              <th colspan="2" style="text-align: center;"><h4>Prédiction des Maladies Cardiaques selon l'Ensemble de Données</h4></th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            <tr>
+                                              <td colspan="2">
+                                                  <div class="showed-content">
+                                                     <img src="{{ url_for('static', filename='assets/images/img.png') }}" alt="">
+                                                  </div>
+                                              </td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+
+                                        <table class="table table-bordered">
+                                          <thead>
+                                            <tr>
+                                              <th colspan="15" style="text-align: center;"><h4>Affichage des 5 Premières Colonnes de l'Ensemble de Données</h4></th>
+                                            </tr>
+                                            <tr>
+                                              <th scope="col">#</th>
+                                              <th scope="col">age</th>
+                                              <th scope="col">sex</th>
+                                              <th scope="col">cp</th>
+                                              <th scope="col">trestbps</th>
+                                              <th scope="col">chol</th>
+                                              <th scope="col">fbs</th>
+                                              <th scope="col">restecg</th>
+                                              <th scope="col">thalach</th>
+                                              <th scope="col">exang</th>
+                                              <th scope="col">oldpeak</th>
+                                              <th scope="col">slope</th>
+                                              <th scope="col">ca</th>
+                                              <th scope="col">thal</th>
+                                              <th scope="col">target</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            <tr>
+                                              <th scope="row">0</th>
+                                              <td>69</td>
+                                              <td>1</td>
+                                              <td>0</td>
+                                              <td>160</td>
+                                              <td>234</td>
+                                              <td>1</td>
+                                              <td>2</td>
+                                              <td>131</td>
+                                              <td>0</td>
+                                              <td>0.1</td>
+                                              <td>1</td>
+                                              <td>1</td>
+                                              <td>0</td>
+                                              <td>0</td>
+                                            </tr>
+                                            <tr>
+                                              <th scope="row">1</th>
+                                              <td>69</td>
+                                              <td>0</td>
+                                              <td>0</td>
+                                              <td>140</td>
+                                              <td>239</td>
+                                              <td>0</td>
+                                              <td>0</td>
+                                              <td>151</td>
+                                              <td>0</td>
+                                              <td>1.8</td>
+                                              <td>0</td>
+                                              <td>2</td>
+                                              <td>0</td>
+                                              <td>0</td>
+                                            </tr>
+                                            <tr>
+                                              <th scope="row">2</th>
+                                              <td>66</td>
+                                              <td>0</td>
+                                              <td>0</td>
+                                              <td>150</td>
+                                              <td>226</td>
+                                              <td>0</td>
+                                              <td>0</td>
+                                              <td>114</td>
+                                              <td>0</td>
+                                              <td>2.6</td>
+                                              <td>2</td>
+                                              <td>0</td>
+                                              <td>0</td>
+                                              <td>0</td>
+                                            </tr>
+                                            <tr>
+                                              <th scope="row">3</th>
+                                              <td>65</td>
+                                              <td>1</td>
+                                              <td>0</td>
+                                              <td>138</td>
+                                              <td>282</td>
+                                              <td>1</td>
+                                              <td>2</td>
+                                              <td>174</td>
+                                              <td>0</td>
+                                              <td>1.4</td>
+                                              <td>1</td>
+                                              <td>1</td>
+                                              <td>0</td>
+                                              <td>1</td>
+                                            </tr>
+                                            <tr>
+                                              <th scope="row">4</th>
+                                              <td>64</td>
+                                              <td>1</td>
+                                              <td>0</td>
+                                              <td>110</td>
+                                              <td>211</td>
+                                              <td>0</td>
+                                              <td>2</td>
+                                              <td>144</td>
+                                              <td>1</td>
+                                              <td>1.8</td>
+                                              <td>1</td>
+                                              <td>0</td>
+                                              <td>0</td>
+                                              <td>0</td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+
+                                        <table class="table table-bordered">
+                                          <thead>
+                                            <tr>
+                                              <th colspan="3" style="text-align: center;"><h4>Algorithmes de Prédiction Utilisés</h4></th>
+                                            </tr>
+                                            <tr>
+                                              <th scope="col">#</th>
+                                              <th scope="col">Nom de l'Algorithme</th>
+                                              <th scope="col">Score de Précision</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            <tr>
+                                              <th scope="row">1</th>
+                                              <td>Arbre de Décision</td>
+                                              <td>72.0 %</td>
+                                            </tr>
+                                            <tr>
+                                              <th scope="row">2</th>
+                                              <td>Ensemble d’Arbres de Décision</td>
+                                              <td>82.67 %</td>
+                                            </tr>
+                                            <tr>
+                                              <th scope="row">3</th>
+                                              <td>Modèles Linéaires</td>
+                                              <td>76.0 %</td>
+                                            </tr>
+                                            <tr>
+                                              <th scope="row">4</th>
+                                              <td>Machines à Vecteur de Support</td>
+                                              <td>78.67 %</td>
+                                            </tr>
+                                            <tr>
+                                              <th scope="row">5</th>
+                                              <td>K plus proches voisins</td>
+                                              <td>74.66 %</td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                    </div>
+                                </form>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.25s">
+                  <p>© Copyright 2023 © All Rights Reserved.
+                     <!-- <br>Designed by : <a rel="nofollow" href="#">Mohamed Boubacar Boureima</a></p> -->
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/owl-carousel.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/animation.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/imagesloaded.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/templatemo-custom.js') }}"></script>
+
+</body>
+
+</html>

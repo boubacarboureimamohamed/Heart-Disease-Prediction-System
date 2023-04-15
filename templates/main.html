@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>Heart Disease Predictor</title>
+
+    <!-- Bootstrap core CSS -->
+    <link type="text/css" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/fontawesome.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/templatemo-space-dynamic.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/animated.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/owl.css') }}">
+
+</head>
+
+<body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+        <div class="preloader-inner">
+            <span class="dot"></span>
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="{{ url_for('home') }}" class="logo">
+                            <h4>H<span>D</span>P<span>S</span></h4>
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li class="scroll-to-section">
+                                {% if current_user.is_authenticated %}
+                                     <a href="{{ url_for('home') }}">Tableau de Bord</a>
+                                {% endif %}
+                            </li>
+                            <li class="scroll-to-section"><a href="{{ url_for('index') }}">Accueil</a></li>
+                            <li class="scroll-to-section">
+                                {% if current_user.is_authenticated %}
+                                     <div class="main-red-button"><a href="{{ url_for('logout') }}">Se déconnecter</a></div>
+                                {% else %}
+                                     <div class="main-red-button"><a href="{{ url_for('login') }}">Se connecter / S' inscrire</a></div>
+                                {% endif %}
+                            </li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+
+    <div id="portfolio" class="our-portfolio section">
+        <div class="container">
+            <div class="row"> 
+                <div class="col-lg-12">
+                    <div class="section-heading  wow bounceIn" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <h3>Découvrez ce que notre <em> Prédit </em><span>Système de Maladies Cardiaques.</span></h3>
+                    </div>
+                    <div id="" class="contact-us section">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 align-self-center" data-wow-duration="0.5s" data-wow-delay="0.25s">
+                                <form id="contact" action="{{ url_for('predict')}}" method="POST" enctype="multipart/form-data">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <fieldset>
+                                                <label for="age">Age : </label>
+                                                <input type="text" id="age" name="age" placeholder="Veuillez entrer l'âge" autocomplete="on" required>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <fieldset>
+                                                <label for="sex">Genre : </label>
+                                                <select id="sex" name="sex" class="form-control">
+                                                  <option selected>--- Veuillez Sélectionner une Option ---</option>
+                                                  <option value="1">Homme</option>
+                                                  <option value="0">Femme</option>
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <fieldset>
+                                                <label for="cp">Douleur thoracique : </label>
+                                                <select id="cp" name="cp" class="form-control">
+                                                  <option selected>--- Veuillez Sélectionner une Option ---</option>
+                                                  <option value="3">Asymtomatic</option>
+                                                  <option value="0">Typical Angina</option>
+                                                  <option value="1">Atypical Angina</option>
+                                                  <option value="2">Non-anginal Pain</option>
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <fieldset>
+                                                <label for="trestbps">Tension Artérielle au Repos : </label>
+                                                <input type="text" id="trestbps" name="trestbps" placeholder="Veuillez entrer un nombre dans la plage [94-200] mmHg" autocomplete="on" required>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <fieldset>
+                                                <label for="chol">Cholestérol Sérique : </label>
+                                                <input type="text" id="chol" name="chol" placeholder="Un nombre dans la plage [126-564] mg/dl" autocomplete="on" required>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <fieldset>
+                                                <label for="fbs">Glycémie à Jeune : </label>
+                                                <select id="fbs" name="fbs" class="form-control">
+                                                  <option selected>--- Veuillez Sélectionner une Option ---</option>
+                                                  <option value="1">Supérieur à 120 mg/dl</option>
+                                                  <option value="0">Moins de 120 mg/dl</option>
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <fieldset>
+                                                <label for="restecg">ECG de repos : </label>
+                                                <select id="restecg" name="restecg" class="form-control">
+                                                  <option selected>--- Veuillez Sélectionner une Option ---</option>
+                                                  <option value="0">Normal</option>
+                                                  <option value="1">Having ST-T wave abnormality</option>
+                                                  <option value="2">Probable or definite left ventricular hypertrophy</option>
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <fieldset>
+                                                <label for="thalach">Rythme Cardiaque : </label>
+                                                <input type="text" id="thalach" name="thalach" placeholder="Veuillez entrer un nombre dans la plage [71-202] bpm" autocomplete="on" required>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <fieldset>
+                                                <label for="oldpeak">ST Depression : </label>
+                                                <input type="text" id="oldpeak" name="oldpeak" placeholder="Veuillez entrer un nombre généralement dans la plage [0-6.2]" autocomplete="on" required>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <fieldset>
+                                                <label for="exang">Exercise-Angine d'effort : </label>
+                                                <select id="exang" name="exang" class="form-control">
+                                                  <option selected>--- Veuillez Sélectionner une Option ---</option>
+                                                  <option value="1">Oui</option>
+                                                  <option value="0">Non</option>
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <fieldset>
+                                                <label for="slope">Pente du segment ST d'effort maximal : </label>
+                                                <select id="slope" name="slope" class="form-control">
+                                                  <option selected>--- Veuillez Sélectionner une Option ---</option>
+                                                  <option value="1">Flat</option>
+                                                  <option value="0">Upsloping</option>
+                                                  <option value="2">Downsloping</option>
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <fieldset>
+                                                <label for="ca">Nombre de navires principaux : </label>
+                                                <input type="text" id="ca" name="ca" placeholder="Veuillez saisir un nombre généralement compris entre [0-4]" autocomplete="on" required>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <fieldset>
+                                                <label for="thal">Thalassémie : </label>
+                                                <select id="thal" name="thal" class="form-control">
+                                                  <option selected>--- Veuillez Sélectionner une Option ---</option>
+                                                  <option value="0">Normal</option>
+                                                  <option value="1">Fixed Defect</option>
+                                                  <option value="2">Reversible Defect</option>
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <fieldset><br>
+                                                <button type="submit" id="form-submit" class="main-button col-lg-12">Cliquez ici pour vérifier la prédiction</button>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.25s">
+                    <p>© Copyright 2023 © All Rights Reserved.
+                       <!-- <br>Designed by : <a rel="nofollow" href="#">Mohamed Boubacar Boureima</a></p> -->
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/owl-carousel.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/animation.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/imagesloaded.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/templatemo-custom.js') }}"></script>
+
+</body>
+
+</html>

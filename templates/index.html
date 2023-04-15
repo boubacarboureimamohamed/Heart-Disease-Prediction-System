@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>Heart Disease Predictor</title>
+
+    <!-- Bootstrap core CSS -->
+    <link type="text/css" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/fontawesome.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/templatemo-space-dynamic.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/animated.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/owl.css') }}">
+
+</head>
+
+<body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+        <div class="preloader-inner">
+            <span class="dot"></span>
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="{{ url_for('index') }}" class="logo">
+                            <h4>H<span>D</span>P<span>S</span></h4>
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li class="scroll-to-section">
+                                {% if current_user.is_authenticated %}
+                                     <a href="{{ url_for('home') }}">Tableau de Bord</a>
+                                {% endif %}
+                            </li>
+                            <li class="scroll-to-section"><a href="#top" class="active">Accueil</a></li>
+                            <li class="scroll-to-section"><a href="#about">À propos</a></li>
+                            <li class="scroll-to-section"><a href="#contact">Contactez-nous</a></li>
+                            <li class="scroll-to-section">
+                                {% if current_user.is_authenticated %}
+                                     <div class="main-red-button"><a href="{{ url_for('logout') }}">Se déconnecter</a></div>
+                                {% else %}
+                                     <div class="main-red-button"><a href="{{ url_for('login') }}">Se connecter / S' inscrire</a></div>
+                                {% endif %}
+                            </li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+        <div class="container">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                  {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                      {{ message }}
+                    </div>
+                  {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-6 align-self-center">
+                            <div class="left-content header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
+                                <h6>Bienvenue sur le système de prédiction des maladies cardiaques</h6>
+                                <h2>Nous Utilisons les Dernières<em> Infrastructures</em> &amp; <span> Technologiques</span></h2>
+                                <p>Le système de prédiction des maladies cardiaques est une plate-forme mise en œuvre pour détecter la probabilité d'avoir une maladie cardiaque. Ce système utilise des algorithmes d' <a rel="nofollow" href="#" target="_parent">Apprentissage Automatique.</a></p>
+                                <div class="main-blue-button">
+                                    <a href="#">Lire plus</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+                                <img src="{{ url_for('static', filename='assets/images/banner_right_image.png') }}" alt="team meeting">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="about" class="about-us section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="left-image wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <img src="{{ url_for('static', filename='assets/images/about-left-image.png') }}" alt="person graphic">
+                    </div>
+                </div>
+                <div class="col-lg-8 align-self-center">
+                    <div class="services">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
+                                    <div class="icon">
+                                        <img src="{{ url_for('static', filename='assets/images/service-icon-01.png') }}" alt="reporting">
+                                    </div>
+                                    <div class="right-text">
+                                        <h4>Analyse de Données</h4>
+                                        <p>L'industrie de la santé possède une énorme quantité de données contenant des informations cachées. Cette information soutient le processus de prise de décision sur le domaine connexe.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.7s">
+                                    <div class="icon">
+                                        <img src="{{ url_for('static', filename='assets/images/service-icon-02.png') }}" alt="">
+                                    </div>
+                                    <div class="right-text">
+                                        <h4>Rapport de Données</h4>
+                                        <p>La prédiction des maladies cardiaques est l'une des tâches complexes de l'industrie de la santé et nécessite plus d'expérience et de connaissances pour être détectée.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.9s">
+                                    <div class="icon">
+                                        <img src="{{ url_for('static', filename='assets/images/service-icon-03.png') }}" alt="">
+                                    </div>
+                                    <div class="right-text">
+                                        <h4>Apprentissage Automatique</h4>
+                                        <p>Dans ce projet, nous utilisons diverses approches d'apprentissage automatique qui sont utiles pour prédire la maladie cardiaque. Ici, le système utilise 14 paramètres pour prédire les maladies cardiaques.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="item wow fadeIn" data-wow-duration="1s" data-wow-delay="1.1s">
+                                    <div class="icon">
+                                        <img src="{{ url_for('static', filename='assets/images/service-icon-04.png') }}" alt="">
+                                    </div>
+                                    <div class="right-text">
+                                        <h4>Prédiction des Maladies Cardiaques</h4>
+                                        <p>Ces paramètres sont utilisés pour améliorer un niveau de précision. L'objectif principal de ce projet est de fournir une analyse des techniques d'apprentissage automatique sur le diagnostic des maladies cardiaques.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact" class="contact-us section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 align-self-center wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0.25s">
+                    <div class="section-heading">
+                        <h2>N'hésitez pas à nous envoyer un message concernant les besoins de votre site Web</h2>
+                        <div class="phone-info">
+                            <h4>Appelez-Nous : <span><i class="fa fa-phone"></i> <a href="#">+1 514-348-7996</a></span></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="0.25s">
+                    <form id="contact" action="" method="">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <fieldset>
+                                    <input type="text" name="name" id="name" placeholder="Votre Prénom" autocomplete="on" required>
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-6">
+                                <fieldset>
+                                    <input type="text" name="surname" id="surname" placeholder="Votre Nom" autocomplete="on" required>
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Votre Mail" required="">
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <textarea name="message" type="text" class="form-control" id="message" placeholder="Votre Message" required=""></textarea>
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <button type="submit" id="form-submit" class="main-button ">Envoyer</button>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="contact-dec">
+                            <img src="{{ url_for('static', filename='assets/images/contact-decoration.png') }}" alt="">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.25s">
+                    <p>© Copyright 2023 © All Rights Reserved.
+                       <!-- <br>Designed by : <a rel="nofollow" href="#">Mohamed Boubacar Boureima</a></p> -->
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/owl-carousel.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/animation.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/imagesloaded.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/templatemo-custom.js') }}"></script>
+
+</body>
+
+</html>
