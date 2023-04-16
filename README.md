@@ -1,4 +1,4 @@
-# IGL601_IFT711_GROUPE_E_MALADIE_CARDIAQUE
+# MALADIE_CARDIAQUE
 
 
 ## Implémentation d’une Systéme de Prédiction des Maladies Cardiaques
@@ -39,6 +39,7 @@ Une plateforme web simple qui utilise des algorithmes d'apprentissage automatiqu
 Le code est écrit en Python. Si Python n'est pas installé, vous pouvez le trouver [ici](https://www.python.org/downloads/). Si vous utilisez une version inférieure de Python, vous pouvez effectuer une mise à niveau à l'aide du package pip, en vous assurant que vous disposez de la dernière version de pip. Pour installer les packages et les bibliothèques requis, exécutez cette commande dans le répertoire du projet après avoir cloné le dépôt :
 
 ```
+pip install flask
 pip install -r requirements.txt
 
 ```
@@ -46,7 +47,7 @@ pip install -r requirements.txt
 **Pour cloner le dépôt**
 
 ```
-git clone https://depot.dinf.usherbrooke.ca/dinf/cours/h23/igl601-711/boum3688 igl601_ift711_groupe_e_don_de_sang.git
+git clone https://github.com/boubacarboureimamohamed/heart-disease-prediction.git
 
 ```
 
@@ -71,14 +72,9 @@ python app.py
 
 ### Travail futur
 
-- améliorer les performances du modèle.
+- Améliorer les performances du modèle.
 - Ajoutez un meilleur style à l'interface utilisateur.
 
-
-### Membres du groupe 
-
- 1. Mohamed Boubacar Boureima - CIP : BOUM3688
- 2. Hygain Pierrot Nganji - CIP : NGAH0301
 
 
 
